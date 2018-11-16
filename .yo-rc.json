@@ -1,0 +1,32 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.jzhome.core"
+    },
+    "jhipsterVersion": "5.3.1",
+    "applicationType": "microservice",
+    "baseName": "jzhome",
+    "packageName": "com.jzhome.core",
+    "packageFolder": "com/jzhome/core",
+    "serverPort": "8081",
+    "authenticationType": "jwt",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "mongodb",
+    "devDatabaseType": "mongodb",
+    "prodDatabaseType": "mongodb",
+    "searchEngine": "elasticsearch",
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": true,
+    "jwtSecretKey": "MzY0ZTg1Y2Y1YTg3NzgwMDA3MTRjMjg0Mjc3Y2ZiMGIzYTJjODU5ZTVkZGM5N2NmZjI1ZDljMmFmMDEyYzM2YjYzYzNmMWNjZjBiNGFmYjk4NjVkY2Q5ODg5YjA0OGIxNmRlMjYwYTljNzc3OTNmODJmYmIwYmM4NzA5MDIyNWI=",
+    "enableTranslation": false,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "clientPackageManager": "npm",
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}
