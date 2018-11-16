@@ -23,6 +23,8 @@ eureka:
     instance:
         prefer-ip-address: true
     client:
+        register-with-eureka: false
+        fetch-registry: false
         service-url:
             defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
 
@@ -39,8 +41,8 @@ spring:
         serialization.indent_output: true
     data:
         mongodb:
-            uri: mongodb://localhost:27017
-            database: jzhome
+            uri: mongodb://aliyun.ga-me.win:27020
+            database: jzhomeServer
         elasticsearch:
             properties:
                 path:

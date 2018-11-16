@@ -1,9 +1,8 @@
 package com.jzhome.core.config;
 
-import com.jzhome.core.security.*;
-import com.jzhome.core.security.jwt.*;
-
-import org.springframework.context.annotation.Bean;
+import com.jzhome.core.security.AuthoritiesConstants;
+import com.jzhome.core.security.jwt.JWTConfigurer;
+import com.jzhome.core.security.jwt.TokenProvider;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
@@ -55,6 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and()
             .authorizeRequests()
+            .antMatchers("/api/addIp").permitAll()
             .antMatchers("/api/**").authenticated()
             .antMatchers("/management/health").permitAll()
             .antMatchers("/management/info").permitAll()
