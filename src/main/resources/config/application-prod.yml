@@ -34,7 +34,7 @@ spring:
             enabled: false
     data:
         mongodb:
-            uri: mongodb://aliyun.ga-me.win:27020
+            uri: mongodb://localhost:27020
             database: jzhomeServer
         jest:
             uri: http://localhost:9200
