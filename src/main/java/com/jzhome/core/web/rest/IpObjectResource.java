@@ -49,6 +49,7 @@ public class IpObjectResource {
     public ResponseEntity addIp(@RequestPart String ip, @RequestPart String where) {
         Map<String, Object> response = new HashMap<>();
         HttpHeaders httpHeaders = new HttpHeaders();
+        log.debug("trigger auto build");
         try {
             ipObjectService.addIpObject(ip, where);
             response.put("status", true);
