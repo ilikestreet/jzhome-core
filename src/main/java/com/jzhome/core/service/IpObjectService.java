@@ -3,6 +3,7 @@ package com.jzhome.core.service;
 import com.jzhome.core.domain.IpObject;
 import com.jzhome.core.exception.DataExistException;
 import com.jzhome.core.repository.IpObjectRepository;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,10 @@ public class IpObjectService {
 
     @Autowired
     private IpObjectRepository ipObjectRepository;
+
+    public List<IpObject> getAllIpObjectByWhere(String where) {
+        return ipObjectRepository.findAllByWhere(where);
+    }
 
     public IpObject getIpObjectByWhere(String where) {
         IpObject ipObject = ipObjectRepository.findIpObjectByWhere(where);
