@@ -5,6 +5,7 @@ import com.jzhome.core.domain.IpObject;
 import com.jzhome.core.exception.DataExistException;
 import com.jzhome.core.service.IpObjectService;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,18 +27,18 @@ public class IpObjectResource {
     @Autowired
     private IpObjectService ipObjectService;
 
-    @PostMapping("/ipByWhere")
+    @PostMapping("/ipsByWhere")
     @Timed
     public ResponseEntity<Map<String, Object>> ipByWhere(@RequestPart String where) {
         HttpHeaders httpHeaders = new HttpHeaders();
         Map<String, Object> response = new HashMap<>();
-        IpObject ipObject = ipObjectService.getIpObjectByWhere(where);
-        if (ipObject != null) {
+        List<IpObject> ipObjectList = ipObjectService.getAllIpObjectByWhere(where);
+        if (ipObjectList != null && ipObjectList.size() > 0) {
             response.put("status", true);
         } else {
             response.put("status", false);
         }
-        response.put("data", ipObject);
+        response.put("data", ipObjectList);
         return new ResponseEntity<>(
             response,
             httpHeaders,
