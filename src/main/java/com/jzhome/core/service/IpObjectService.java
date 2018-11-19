@@ -32,7 +32,7 @@ public class IpObjectService {
 
     public void addIpObject(String ip, String where, ZonedDateTime when) throws DataExistException {
         if (getIpObjectByWhere(where) != null && getIpObjectByWhere(where).getWhen()
-            .isAfter(when)) {
+            .isBefore(when)) {
             throw new DataExistException("Data already exists in database");
         }
         IpObject ipObject = new IpObject();
