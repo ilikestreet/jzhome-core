@@ -24,6 +24,7 @@ public class IpObjectResource {
 
     private final Logger log = LoggerFactory.getLogger(IpObjectResource.class);
 
+
     @Autowired
     private IpObjectService ipObjectService;
 
