@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface IpObjectRepository extends MongoRepository<IpObject, String> {
 
-    IpObject findIpObjectByWhere(String where);
+    IpObject findIpObjectByWhereOrderByObjectIdDesc(String where);
 
     List<IpObject> findAllByWhere(String where);
 }

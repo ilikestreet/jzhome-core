@@ -4,7 +4,6 @@ import java.time.ZonedDateTime;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "ipObject")
 
@@ -12,9 +11,7 @@ public class IpObject {
 
     @Id
     private ObjectId objectId;
-    @Field(value = "ip")
     private String ip;
-    @Field(value = "where")
     private String where;
     private ZonedDateTime when;
 

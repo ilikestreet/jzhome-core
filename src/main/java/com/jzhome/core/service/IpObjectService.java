@@ -15,20 +15,24 @@ public class IpObjectService {
 
     private final Logger log = LoggerFactory.getLogger(IpObjectService.class);
 
+    private final IpObjectRepository ipObjectRepository;
+
     @Autowired
-    private IpObjectRepository ipObjectRepository;
+    public IpObjectService(IpObjectRepository ipObjectRepository) {
+        this.ipObjectRepository = ipObjectRepository;
+    }
 
     public List<IpObject> getAllIpObjectByWhere(String where) {
         return ipObjectRepository.findAllByWhere(where);
     }
 
-    public IpObject getIpObjectByWhere(String where) {
-        IpObject ipObject = ipObjectRepository.findIpObjectByWhere(where);
-        return ipObject;
+    private IpObject getIpObjectByWhere(String where) {
+        return ipObjectRepository.findIpObjectByWhereOrderByObjectIdDesc(where);
     }
 
     public void addIpObject(String ip, String where, ZonedDateTime when) throws DataExistException {
-        if (getIpObjectByWhere(where) != null) {
+        if (getIpObjectByWhere(where) != null && getIpObjectByWhere(where).getWhen()
+            .isAfter(when)) {
             throw new DataExistException("Data already exists in database");
         }
         IpObject ipObject = new IpObject();
