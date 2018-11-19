@@ -4,6 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import com.jzhome.core.domain.IpObject;
 import com.jzhome.core.exception.DataExistException;
 import com.jzhome.core.service.IpObjectService;
+import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,9 +52,8 @@ public class IpObjectResource {
     public ResponseEntity addIp(@RequestPart String ip, @RequestPart String where) {
         Map<String, Object> response = new HashMap<>();
         HttpHeaders httpHeaders = new HttpHeaders();
-        log.debug("trigger auto build");
         try {
-            ipObjectService.addIpObject(ip, where);
+            ipObjectService.addIpObject(ip, where, ZonedDateTime.now());
             response.put("status", true);
             response.put("message", "success");
 

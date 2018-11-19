@@ -3,6 +3,7 @@ package com.jzhome.core.service;
 import com.jzhome.core.domain.IpObject;
 import com.jzhome.core.exception.DataExistException;
 import com.jzhome.core.repository.IpObjectRepository;
+import java.time.ZonedDateTime;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,13 +27,14 @@ public class IpObjectService {
         return ipObject;
     }
 
-    public void addIpObject(String ip, String where) throws DataExistException {
+    public void addIpObject(String ip, String where, ZonedDateTime when) throws DataExistException {
         if (getIpObjectByWhere(where) != null) {
             throw new DataExistException("Data already exists in database");
         }
         IpObject ipObject = new IpObject();
         ipObject.setIp(ip);
         ipObject.setWhere(where);
+        ipObject.setWhen(when);
         ipObjectRepository.save(ipObject);
     }
 }

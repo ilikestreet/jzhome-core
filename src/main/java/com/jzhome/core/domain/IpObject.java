@@ -1,5 +1,6 @@
 package com.jzhome.core.domain;
 
+import java.time.ZonedDateTime;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -15,6 +16,7 @@ public class IpObject {
     private String ip;
     @Field(value = "where")
     private String where;
+    private ZonedDateTime when;
 
     @Override
     public String toString() {
@@ -48,5 +50,13 @@ public class IpObject {
 
     public void setObjectId(ObjectId objectId) {
         this.objectId = objectId;
+    }
+
+    public ZonedDateTime getWhen() {
+        return when;
+    }
+
+    public void setWhen(ZonedDateTime when) {
+        this.when = when;
     }
 }
