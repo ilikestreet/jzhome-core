@@ -29,9 +29,28 @@ public class IpObjectResource {
     @Autowired
     private IpObjectService ipObjectService;
 
-    @PostMapping("/ipsByWhere")
+    @PostMapping("/ipByWhere")
     @Timed
     public ResponseEntity<Map<String, Object>> ipByWhere(@RequestPart String where) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        Map<String, Object> response = new HashMap<>();
+        IpObject ipObject = ipObjectService.getOneIpObjectByWhere(where);
+        if (ipObject != null) {
+            response.put("status", true);
+        } else {
+            response.put("status", false);
+        }
+        response.put("data", ipObject);
+        return new ResponseEntity<>(
+            response,
+            httpHeaders,
+            HttpStatus.OK);
+    }
+
+
+    @PostMapping("/ipsByWhere")
+    @Timed
+    public ResponseEntity<Map<String, Object>> ipsByWhere(@RequestPart String where) {
         HttpHeaders httpHeaders = new HttpHeaders();
         Map<String, Object> response = new HashMap<>();
         List<IpObject> ipObjectList = ipObjectService.getAllIpObjectByWhere(where);

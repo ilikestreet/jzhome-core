@@ -8,5 +8,7 @@ public interface IpObjectRepository extends MongoRepository<IpObject, String> {
 
     IpObject findIpObjectByWhereOrderByObjectIdDesc(String where);
 
+    IpObject findIpObjectByWhereOrderByWhenWhenDesc(String where);
+
     List<IpObject> findAllByWhere(String where);
 }

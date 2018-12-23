@@ -26,8 +26,8 @@ public class IpObjectService {
         return ipObjectRepository.findAllByWhere(where);
     }
 
-    private IpObject getIpObjectByWhere(String where) {
-        return ipObjectRepository.findIpObjectByWhereOrderByObjectIdDesc(where);
+    public IpObject getOneIpObjectByWhere(String where) {
+        return ipObjectRepository.findIpObjectByWhereOrderByWhenWhenDesc(where);
     }
 
     public void addIpObject(String ip, String where, ZonedDateTime when) throws DataExistException {
